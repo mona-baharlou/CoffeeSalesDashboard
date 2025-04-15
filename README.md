@@ -32,7 +32,7 @@ A dynamic PowerBI dashboard analyzing sales performance, product trends, store m
 
 ### 5. **Data Pipeline**
    - **Power Query**: Cleaned and transformed raw CSV data (e.g., date formatting, merging tables).
-  - **Cumulative Forecast Logic**: DAX-driven rolling forecast using time intelligence:
+  - **DAX Measures**: Advanced DAX like DAX-driven rolling forecast using time intelligence:
      ```dax
      Forecast = 
      CALCULATE(
