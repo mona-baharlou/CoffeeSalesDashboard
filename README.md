@@ -32,24 +32,20 @@ A dynamic PowerBI dashboard analyzing sales performance, product trends, store m
 
 ### 5. **Data Pipeline**
    - **Power Query**: Cleaned and transformed raw CSV data (e.g., date formatting, merging tables).
-   - **DAX Measures**: Critical calculations like:
+  - **Cumulative Forecast Logic**: DAX-driven rolling forecast using time intelligence:
      ```dax
      Forecast = 
-CALCULATE(
-    SUMX(
-        VALUES(
-            'Forecast Date Table'[Date]
-        ),
-        [AVG Daily Sales By Total Sales]
-    ),
-    FILTER(
-        ALLSELECTED(
-            'Forecast Date Table'[Date]
-        ),
-        'Forecast Date Table'[Date] <= MAX('Forecast Date Table'[Date])
-    )
-)
-```
+     CALCULATE(
+         SUMX(
+             VALUES('Forecast Date Table'[Date]),
+             [AVG Daily Sales By Total Sales]
+         ),
+         FILTER(
+             ALLSELECTED('Forecast Date Table'[Date]),
+             'Forecast Date Table'[Date] <= MAX('Forecast Date Table'[Date])
+         )
+     )
+     ```
 
 ## 🛠️ Technical Implementation
 - **Data Source**: CSV files for transactions, products, and store details.
